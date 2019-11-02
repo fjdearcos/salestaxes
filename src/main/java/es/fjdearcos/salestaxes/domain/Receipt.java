@@ -9,13 +9,14 @@ public class Receipt {
     private float total;
 
     public Receipt(Iterable<TaxedProduct> taxedProducts) {
-        float taxes = 0, total = 0;
+        float productsTaxes = 0;
+        float productsTotal = 0;
         for (TaxedProduct taxedProduct : taxedProducts) {
-            taxes += taxedProduct.getTaxes();
-            total += taxedProduct.getTotalPrice();
+            productsTaxes += taxedProduct.getTaxes();
+            productsTotal += taxedProduct.getTotalPrice();
         }
         this.taxedProducts = taxedProducts;
-        this.taxes = taxes;
-        this.total = total;
+        this.taxes = productsTaxes;
+        this.total = productsTotal;
     }
 }
