@@ -21,7 +21,9 @@ public class SalesTaxesServiceImpl implements SalesTaxesService {
         List<TaxedProduct> taxedProducts = new LinkedList<>();
         for (Product product: purchase.getProducts()) {
             float tax = taxesService.applyTax(product);
-            taxedProducts.add(new TaxedProduct(product.getQuantity(), product.getName(), tax, product.getPrice() + tax));
+            taxedProducts.add(
+                    new TaxedProduct(product.getQuantity(), product.getName(), product.isImported(), tax,
+                            product.getPrice() + tax));
         }
         return new Receipt(taxedProducts);
     }

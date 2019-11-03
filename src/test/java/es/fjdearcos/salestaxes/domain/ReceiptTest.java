@@ -11,11 +11,11 @@ public class ReceiptTest {
     private static final float TEST_PRICE_1 = 20.0f;
     private static final float TEST_TAX_1 = 2.0f;
     private static final TaxedProduct TEST_TAXED_PRODUCT_1 =
-            new TaxedProduct(1, "testProduct", TEST_TAX_1, TEST_PRICE_1);
+            new TaxedProduct(1, "testProduct", false, TEST_TAX_1, TEST_PRICE_1);
     private static final float TEST_PRICE_2 = 10.0f;
     private static final float TEST_TAX_2 = 1.0f;
     private static final TaxedProduct TEST_TAXED_PRODUCT_2 =
-            new TaxedProduct(2, "testProduct2", TEST_TAX_2, TEST_PRICE_2);
+            new TaxedProduct(2, "testProduct2", true, TEST_TAX_2, TEST_PRICE_2);
     private static final float DELTA = 0.001f;
 
 
