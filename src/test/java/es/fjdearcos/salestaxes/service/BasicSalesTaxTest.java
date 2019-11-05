@@ -78,4 +78,14 @@ public class BasicSalesTaxTest {
         assertEquals(0, actualTax, DELTA);
         verify(mockedMedicalProductsRepository).isMedicalProduct(eq(TEST_NAME));
     }
+
+    @Test
+    public void testApplyTaxRoundTax() {
+        Product productToRound = new Product(1, TEST_NAME, TEST_PRICE + 0.01f, false);
+        float roundedTax = 2.05f;
+
+        float actualTax = basicSalesTax.applyTax(productToRound);
+
+        assertEquals(roundedTax, actualTax, DELTA);
+    }
 }

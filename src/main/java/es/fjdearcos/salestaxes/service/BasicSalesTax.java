@@ -5,7 +5,7 @@ import es.fjdearcos.salestaxes.repository.BookProductsRepository;
 import es.fjdearcos.salestaxes.repository.FoodProductsRepository;
 import es.fjdearcos.salestaxes.repository.MedicalProductsRepository;
 
-public class BasicSalesTax implements SalesTax {
+public class BasicSalesTax extends SalesTaxTemplate {
 
     private static final float TAX_RATE = 0.10f;
 
@@ -22,17 +22,15 @@ public class BasicSalesTax implements SalesTax {
         this.medicalProductsRepository = medicalProductsRepository;
     }
 
-
-    public float applyTax(Product product) {
-        if (isExemptProduct(product)) {
-            return 0;
-        }
-        return product.getPrice() * TAX_RATE;
-    }
-
-    private boolean isExemptProduct(Product product) {
+    @Override
+    boolean isExempt(Product product) {
         return bookProductsRepository.isBookProduct(product.getName()) ||
                 foodProductsRepository.isFoodProduct(product.getName()) ||
                 medicalProductsRepository.isMedicalProduct(product.getName());
+    }
+
+    @Override
+    float getTaxRate() {
+        return TAX_RATE;
     }
 }

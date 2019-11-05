@@ -33,4 +33,14 @@ public class ImportedGoodTaxTest {
 
         assertEquals(0.0f, actualTax, DELTA);
     }
+
+    @Test
+    public void testApplyTaxRoundTax() {
+        Product productToRound = new Product(1, "testProduct", TEST_PRICE + 0.01f, true);
+        float roundedTax = 0.30f;
+
+        float actualTax = importedGoodTax.applyTax(productToRound);
+
+        assertEquals(roundedTax, actualTax, DELTA);
+    }
 }
