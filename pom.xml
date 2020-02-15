@@ -16,6 +16,7 @@
         <maven.assembly.plugin.version>3.1.1</maven.assembly.plugin.version>
         <jacoco.version>0.8.1</jacoco.version>
         <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
+        <pitest.maven.version>1.4.11</pitest.maven.version>
 
         <lombok.version>1.18.6</lombok.version>
         <spring.version>4.3.23.RELEASE</spring.version>
@@ -85,7 +86,16 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>${pitest.maven.version}</version>
+                <configuration>
+                    <outputFormats>
+                        <outputFormat>XML</outputFormat>
+                    </outputFormats>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
